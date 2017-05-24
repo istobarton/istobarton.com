@@ -27,10 +27,14 @@ import { ActivatedRoute } from '@angular/router';
       </div>
       <div class="links links-neon">
         <a href="mailto:istobarton@gmail.com">email</a>
-        <!--<a href="https://docs.google.com/document/d/16AUDylQAXch03o_ASd5hE6NTGCn19mIq2NtNA8E4O0k/edit?usp=sharing" target="_blank">resume</a>-->
-        <!--<a href="">images</a>-->
-        <!--<a href="">videos</a>-->
+        <a href="https://drive.google.com/file/d/0BzoHrXVpe37cbmdkNlZmSnJlVlk/view?usp=sharing" target="_blank">headshot</a>
+        <!--<a href="" target="_blank">resume</a>-->
       </div>
+      <!--<div class="links links-neon">-->
+        <!--<a href="" target="_blank">photo</a>-->
+        <!--<a href="" target="_blank">video</a>-->
+        <!--<a href="" target="_blank">audio</a>-->
+      <!--</div>-->
     </div>
   `
 })

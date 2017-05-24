@@ -113,9 +113,9 @@ a {
   a {
     color: $neon-pink;
     &:hover {
-      text-shadow: -.1vw 0vw .5vw $neon-pink, -.15vw 0vw .9vw $neon-pink, -.2vw 0vw .9vw $neon-pink,
-      -.1vw 0vw 12vw $neon-dark-pink, -.2vw 0vw 12vw $neon-dark-pink, -.4vw 0vw 12vw $neon-dark-pink,
-      -.1vw 0vw 21vw $neon-dark-pink, -.2vw 0vw 21vw $neon-dark-pink, -.4vw 0vw 3vw $neon-dark-pink, .2vw 0vw40vw $neon-dark-pink;
+      text-shadow: -0.587px 0px .5vw $neon-pink, -0.88px 0px 5.28px $neon-pink, -1.175px 0px 5.28px $neon-pink,
+      -0.587px 0px 12vw $neon-dark-pink, -1.175px 0px 12vw $neon-dark-pink, -2.35px 0px 12vw $neon-dark-pink,
+      -0.587px 0px 21vw $neon-dark-pink, -1.175px 0px 21vw $neon-dark-pink, -2.35px 0px 3vw $neon-dark-pink, 1.175px 0px40px $neon-dark-pink;
     }
   }
 }
@@ -126,33 +126,33 @@ a {
 
 .green-light-out {
   text-shadow:
-    -.1vw 0vw .1vw $neon-green-off, -.15vw 0vw .2vw $neon-green-off, -.2vw 0vw .2vw $neon-green-off,
-    -.1vw 0vw .1vw $neon-dark-green, -.2vw 0vw .1vw $neon-dark-green, -.4vw 0vw .1vw $neon-dark-green,
-    -.1vw 0vw .2vw $neon-dark-green, -.2vw 0vw .2vw $neon-dark-green, -.4vw 0vw .2vw $neon-dark-green, .2vw 0vw .5vw $neon-dark-green;
+    -0.587px 0px 0.587px $neon-green-off, -0.88px 0px 1.175px $neon-green-off, -1.175px 0px 1.175px $neon-green-off,
+    -0.587px 0px 0.587px $neon-dark-green, -1.175px 0px 0.587px $neon-dark-green, -2.35px 0px 0.587px $neon-dark-green,
+    -0.587px 0px 1.175px $neon-dark-green, -1.175px 0px 1.175px $neon-dark-green, -2.35px 0px 1.175px $neon-dark-green, 1.175px 0px .5vw $neon-dark-green;
   color: $neon-green-off;
 }
 
 .links-neon {
   text-shadow:
-    -.1vw 0vw .1vw $neon-pink, -.15vw 0vw .2vw $neon-pink, -.2vw 0vw .2vw $neon-pink,
-    -.1vw 0vw 3vw $neon-dark-pink, -.2vw 0vw 3vw $neon-dark-pink, -.4vw 0vw 3vw $neon-dark-pink,
-    -.1vw 0vw 5vw $neon-dark-pink, -.2vw 0vw 5vw $neon-dark-pink, -.4vw 0vw .8vw $neon-dark-pink, .2vw 0vw 10vw $neon-dark-pink;
+    -0.587px 0px 0.587px $neon-pink, -0.88px 0px 1.175px $neon-pink, -1.175px 0px 1.175px $neon-pink,
+    -0.587px 0px 3vw $neon-dark-pink, -1.175px 0px 3vw $neon-dark-pink, -2.35px 0px 3vw $neon-dark-pink,
+    -0.587px 0px 5vw $neon-dark-pink, -1.175px 0px 5vw $neon-dark-pink, -2.35px 0px .8vw $neon-dark-pink, 1.175px 0px 10px $neon-dark-pink;
   color: $neon-pink;
 }
 
 .isto {
   text-shadow:
-    -.1vw 0vw .1vw $neon-blue, -.15vw 0vw .2vw $neon-blue, -.2vw 0vw .2vw $neon-blue,
-    -.1vw 0vw 3vw $neon-dark-blue, -.2vw 0vw 3vw $neon-dark-blue, -.4vw 0vw 3vw $neon-dark-blue,
-    -.1vw 0vw 5vw $neon-dark-blue, -.2vw 0vw 5vw $neon-dark-blue, -.4vw 0vw .8vw $neon-dark-blue, .2vw 0vw 10vw $neon-dark-blue;
+    -0.587px 0px 0.587px $neon-blue, -0.88px 0px 1.175px $neon-blue, -1.175px 0px 1.175px $neon-blue,
+    -0.587px 0px 3vw $neon-dark-blue, -1.175px 0px 3vw $neon-dark-blue, -2.35px 0px 3vw $neon-dark-blue,
+    -0.587px 0px 5vw $neon-dark-blue, -1.175px 0px 5vw $neon-dark-blue, -2.35px 0px .8vw $neon-dark-blue, 1.175px 0px 10px $neon-dark-blue;
   color: $neon-blue;
 }
 
 .barton {
   text-shadow:
-    -.1vw 0vw .1vw $neon-blue-off, -.15vw 0vw .2vw $neon-blue-off, -.2vw 0vw .2vw $neon-blue-off,
-    -.1vw 0vw .1vw $neon-dark-blue, -.2vw 0vw .1vw $neon-dark-blue, -.4vw 0vw .1vw $neon-dark-blue,
-    -.1vw 0vw .2vw $neon-dark-blue, -.2vw 0vw .2vw $neon-dark-blue, -.4vw 0vw .2vw $neon-dark-blue, .2vw 0vw .5vw $neon-dark-blue;
+    -0.587px 0px 0.587px $neon-blue-off, -0.88px 0px 1.175px $neon-blue-off, -1.175px 0px 1.175px $neon-blue-off,
+    -0.587px 0px 0.587px $neon-dark-blue, -1.175px 0px 0.587px $neon-dark-blue, -2.35px 0px 0.587px $neon-dark-blue,
+    -0.587px 0px 1.175px $neon-dark-blue, -1.175px 0px 1.175px $neon-dark-blue, -2.35px 0px 1.175px $neon-dark-blue, 1.175px 0px .5vw $neon-dark-blue;
   color: $neon-blue-off;
 }
 
@@ -183,16 +183,16 @@ a {
   0%,
   100% {
     text-shadow:
-      -.1vw 0vw .1vw $neon-green, -.15vw 0vw .2vw $neon-green, -.2vw 0vw .2vw $neon-green,
-      -.1vw 0vw 3vw $neon-dark-green, -.2vw 0vw 3vw $neon-dark-green, -.4vw 0vw 3vw $neon-dark-green,
-      -.1vw 0vw 5vw $neon-dark-green, -.2vw 0vw 5vw $neon-dark-green, -.4vw 0vw .8vw $neon-dark-green, .2vw 0vw 10vw $neon-dark-green;
+      -0.587px 0px 0.587px $neon-green, -0.88px 0px 1.175px $neon-green, -1.175px 0px 1.175px $neon-green,
+      -0.587px 0px 3vw $neon-dark-green, -1.175px 0px 3vw $neon-dark-green, -2.35px 0px 3vw $neon-dark-green,
+      -0.587px 0px 5vw $neon-dark-green, -1.175px 0px 5vw $neon-dark-green, -2.35px 0px .8vw $neon-dark-green, 1.175px 0px 10px $neon-dark-green;
     color: $neon-green;
   }
   50% {
     text-shadow:
-      -.1vw 0vw .1vw $neon-green-off, -.15vw 0vw .2vw $neon-green-off, -.2vw 0vw .2vw $neon-green-off,
-      -.1vw 0vw .1vw $neon-dark-green, -.2vw 0vw .1vw $neon-dark-green, -.4vw 0vw .1vw $neon-dark-green,
-      -.1vw 0vw .2vw $neon-dark-green, -.2vw 0vw .2vw $neon-dark-green, -.4vw 0vw .2vw $neon-dark-green, .2vw 0vw .5vw $neon-dark-green;
+      -0.587px 0px 0.587px $neon-green-off, -0.88px 0px 1.175px $neon-green-off, -1.175px 0px 1.175px $neon-green-off,
+      -0.587px 0px 0.587px $neon-dark-green, -1.175px 0px 0.587px $neon-dark-green, -2.35px 0px 0.587px $neon-dark-green,
+      -0.587px 0px 1.175px $neon-dark-green, -1.175px 0px 1.175px $neon-dark-green, -2.35px 0px 1.175px $neon-dark-green, 1.175px 0px .5vw $neon-dark-green;
     color: $neon-green-off;
   }
 }
@@ -201,16 +201,16 @@ a {
   0%,
   100% {
     text-shadow:
-      -.1vw 0vw .1vw $neon-blue, -.15vw 0vw .2vw $neon-blue, -.2vw 0vw .2vw $neon-blue,
-      -.1vw 0vw 3vw $neon-dark-blue, -.2vw 0vw 3vw $neon-dark-blue, -.4vw 0vw 3vw $neon-dark-blue,
-      -.1vw 0vw 5vw $neon-dark-blue, -.2vw 0vw 5vw $neon-dark-blue, -.4vw 0vw .8vw $neon-dark-blue, .2vw 0vw 10vw $neon-dark-blue;
+      -0.587px 0px 0.587px $neon-blue, -0.88px 0px 1.175px $neon-blue, -1.175px 0px 1.175px $neon-blue,
+      -0.587px 0px 3vw $neon-dark-blue, -1.175px 0px 3vw $neon-dark-blue, -2.35px 0px 3vw $neon-dark-blue,
+      -0.587px 0px 5vw $neon-dark-blue, -1.175px 0px 5vw $neon-dark-blue, -2.35px 0px .8vw $neon-dark-blue, 1.175px 0px 10px $neon-dark-blue;
     color: $neon-blue;
   }
   50% {
     text-shadow:
-      -.1vw 0vw .1vw $neon-blue-off, -.15vw 0vw .2vw $neon-blue-off, -.2vw 0vw .2vw $neon-blue-off,
-      -.1vw 0vw .1vw $neon-dark-blue, -.2vw 0vw .1vw $neon-dark-blue, -.4vw 0vw .1vw $neon-dark-blue,
-      -.1vw 0vw .2vw $neon-dark-blue, -.2vw 0vw .2vw $neon-dark-blue, -.4vw 0vw .2vw $neon-dark-blue, .2vw 0vw .5vw $neon-dark-blue;
+      -0.587px 0px 0.587px $neon-blue-off, -0.88px 0px 1.175px $neon-blue-off, -1.175px 0px 1.175px $neon-blue-off,
+      -0.587px 0px 0.587px $neon-dark-blue, -1.175px 0px 0.587px $neon-dark-blue, -2.35px 0px 0.587px $neon-dark-blue,
+      -0.587px 0px 1.175px $neon-dark-blue, -1.175px 0px 1.175px $neon-dark-blue, -2.35px 0px 1.175px $neon-dark-blue, 1.175px 0px .5vw $neon-dark-blue;
     color: $neon-blue-off;
   }
 }
