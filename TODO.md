@@ -4,4 +4,4 @@ To-do Tasks:
 * Assembling images/videos for links
 * Spinning image on click? 
 * Clean up file structure
-* Figure out how the fuck to deploy this with webpack
+* Get the routing to work for /act

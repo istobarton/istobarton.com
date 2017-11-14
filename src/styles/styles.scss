@@ -113,9 +113,9 @@ a {
   a {
     color: $neon-pink;
     &:hover {
-      text-shadow: -0.587px 0px .5vw $neon-pink, -0.88px 0px 5.28px $neon-pink, -1.175px 0px 5.28px $neon-pink,
-      -0.587px 0px 12vw $neon-dark-pink, -1.175px 0px 12vw $neon-dark-pink, -2.35px 0px 12vw $neon-dark-pink,
-      -0.587px 0px 21vw $neon-dark-pink, -1.175px 0px 21vw $neon-dark-pink, -2.35px 0px 3vw $neon-dark-pink, 1.175px 0px40px $neon-dark-pink;
+      text-shadow: -0.587px 0px .5vw $neon-pink, -1px 0px 5.28px $neon-pink, -2px 0px 5.28px $neon-pink,
+      -0.587px 0px 12vw $neon-dark-pink, -1px 0px 12vw $neon-dark-pink, -4px 0px 12vw $neon-dark-pink,
+      -0.587px 0px 21vw $neon-dark-pink, -2px 0px 21vw $neon-dark-pink, -4px 0px 3vw $neon-dark-pink, 1.175px 0px40px $neon-dark-pink;
     }
   }
 }
