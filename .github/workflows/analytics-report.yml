@@ -1,0 +1,25 @@
+name: monthly analytics report
+on:
+  schedule:
+    - cron: '17 13 1 * *'   # 1st of each month, ~9am New York
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Build last month's report
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_SITE_TAG: ${{ secrets.CF_SITE_TAG }}
+        run: node scripts/analytics-report.mjs > report.md
+      - name: Post it as an issue (GitHub emails you)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "istobarton.com analytics: $(date -d 'last month' +'%B %Y')" --body-file report.md
