@@ -8,7 +8,7 @@ permissions:
   issues: write
 jobs:
   report:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,4 +22,5 @@ jobs:
       - name: Post it as an issue (GitHub emails you)
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue create --title "istobarton.com analytics: $(date -d 'last month' +'%B %Y')" --body-file report.md
+        run: |
+          gh issue create --title "istobarton.com analytics: $(date -d 'last month' +'%B %Y')" --body-file report.md
