@@ -1,0 +1,12 @@
+README.md
+CLAUDE.md
+package.json
+package-lock.json
+playwright.config.mjs
+wrangler.jsonc
+.assetsignore
+tests
+scripts
+node_modules
+.github
+.git
