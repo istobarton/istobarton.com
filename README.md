@@ -48,13 +48,12 @@ Anyone (human or AI) can edit it with a text editor and redeploy by pushing to `
 Edit the HTML directly:
 - TikTok, YouTube, IMDb links: add to the social icon rows (copy the Instagram `<a>` and swap the icon file).
 - Sub/Urban Photography website: wrap their name in a link in `gallery.html`.
-- Purpose Merriment link in the footer.
 - Video embed URLs in `js/site.js` (`VIDEOS`). Until filled, the clips show as stills.
 
 ## Everyday edits
 - **Text:** open the page's `.html`, change the words, commit, push. Live in about a minute.
 - **A credit:** in `resume.html` each credit is one `<div class="row3">…</div>`; copy a line, edit it.
-  Also replace `downloads/Isto-Barton-Resume.pdf`.
+  Then rebuild the PDF: `npm run serve`, and in another tab `npm run resume-pdf`.
 - **A photo:** export it as `name-800.jpg` and `name-800.webp` (plus 480 and 1200/1600 if you have them) into
   `assets/img/`, then copy an existing `<picture>` block and change the name. Or ask Claude to do it.
 - **Roll back:** Cloudflare → Pages project → Deployments → pick the last good one → "Rollback to this deployment".

@@ -6,7 +6,8 @@
     "serve": "npx --yes serve -l 4173 .",
     "test": "playwright test",
     "links": "linkinator http://localhost:4173 --recurse --skip \"^(?!http://localhost)\"",
-    "report": "node scripts/analytics-report.mjs"
+    "report": "node scripts/analytics-report.mjs",
+    "resume-pdf": "node scripts/resume-pdf.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.48.2",
