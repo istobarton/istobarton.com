@@ -27,7 +27,7 @@ const SECTIONS = [
     ['Arden of Faversham', 'Michael', 'The Hidden Room'],
     ["Charley's Aunt", 'Lord Fancourt Babberly', 'Different Stages'],
     ['Miracle on 34th Street: A Radiocast', 'Fred Gailey', 'Penfold Theatre'],
-    ['Henry VI, Parts 1 to 3', 'Richard Plantagenet / Gloucester', 'Shakespeare at Winedale'],
+    ['Henry VI, Parts 1-3', 'Richard Plantagenet / Gloucester', 'Shakespeare at Winedale'],
     ['Hamlet', 'Laertes', 'Shakespeare at Winedale'],
     ['As You Like It', 'Silvius', 'Shakespeare at Winedale'],
     ['Twelfth Night', 'Malvolio', 'Shakespeare at Winedale'],
@@ -44,10 +44,10 @@ const SECTIONS = [
   ]],
 ];
 const SKILLS = [
-  ['Comedy & Hosting', 'improv, stand-up, host / emcee, voiceover'],
-  ['Music', 'singer, guitar, saxophone (alto, baritone, soprano), whistler'],
-  ['Physical', 'stage combat, Kajukenbo, tap (basic), distance running, cycling, yoga'],
-  ['Other', "tarot reading, puppetry (marionette), Russian, driver's license, valid passport"],
+  ['Comedy & Hosting', 'Improv, Stand-Up, Host / Emcee, Voiceover'],
+  ['Music', 'Singer, Guitar, Saxophone (Alto, Baritone, Soprano), Whistler'],
+  ['Physical', 'Stage Combat, Kajukenbo, Tap (Basic), Distance Running, Cycling, Yoga'],
+  ['Other', "Tarot Reading, Puppetry (Marionette), Russian, Driver's License, Valid Passport"],
   ['Dialects', 'Standard American, New York, Southern, Texan, British RP, Cockney, Irish, Scottish, Australian, Russian'],
 ];
 

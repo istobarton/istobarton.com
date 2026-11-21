@@ -21,7 +21,7 @@
         var d = dots[i];
         quote.classList.add('fade');
         setTimeout(function(){
-          quote.querySelector('blockquote').textContent = '“' + d.dataset.q + '”';
+          quote.querySelector('blockquote').textContent = d.hasAttribute('data-plain') ? d.dataset.q : '“' + d.dataset.q + '”';
           quote.querySelector('figcaption').textContent = d.dataset.s;
           quote.style.setProperty('--c', d.style.getPropertyValue('--c'));
           quote.classList.remove('fade');
@@ -85,9 +85,9 @@
     });
   }
 
-  // Footer dots do a little wave the first time the footer scrolls into view
+  // Footer dots wave on hover (CSS). Touch screens can't hover, so there they wave once when the footer scrolls into view
   var fd = document.querySelector('.fdots');
-  if(fd && 'IntersectionObserver' in window){
+  if(fd && 'IntersectionObserver' in window && window.matchMedia('(hover: none)').matches){
     var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ fd.classList.add('wave'); io.disconnect(); } }, { threshold: 1 });
     io.observe(fd);
   }
