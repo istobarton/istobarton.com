@@ -7,7 +7,7 @@ import { chromium } from '@playwright/test';
 const OUT = new URL('../downloads/Isto-Barton-Resume.pdf', import.meta.url).pathname;
 
 const CONTACT = ['hello@istobarton.com', 'istobarton.com', 'New York, NY'];
-const STATS = ['Height: 5\'11"', 'Hair: Dark Blonde', 'Eyes: Blue', 'Voice: Baritone'];
+const STATS = ['Height: 5\'11"', 'Hair: Brown', 'Eyes: Blue', 'Voice: Baritone'];
 
 const SECTIONS = [
   ['FILM / NEW MEDIA', '', [
