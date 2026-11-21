@@ -30,6 +30,7 @@
     }
     if(root.classList.contains('side') && pics.length > 1){
       var cur = Math.floor(Math.random() * pics.length), timer = null;
+      var first = pics[cur].querySelector('img'); if(first){ first.loading = 'eager'; first.setAttribute('fetchpriority', 'high'); }
       show(cur);
       var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function start(){ if(!calm && !timer) timer = setInterval(function(){ cur = (cur + 1) % pics.length; show(cur); }, 5000); }
