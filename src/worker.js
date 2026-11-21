@@ -26,7 +26,7 @@ export default {
       const name = (url.searchParams.get('name') || file.split('/').pop()).replace(/[^A-Za-z0-9.-]/g, '');
       res = new Response(asset.body, asset);
       if (asset.ok) res.headers.set('Content-Disposition', `attachment; filename="${name}"`);
-      label = file.includes('/hs-') ? `a headshot (${name})` : `a gallery photo (${name})`;
+      label = describe(file);
     } else {
       res = await env.ASSETS.fetch(request);
       file = url.pathname;
@@ -76,6 +76,18 @@ async function record(request, env, file, label) {
     ].join('\r\n');
     try { await env.MAILER.send(new EmailMessage(from_, env.NOTIFY_TO, raw)); } catch (e) { console.log('email failed', e && e.message); }
   }
+}
+
+// Human labels for the email subject, e.g. "a gallery photo from The Maids"
+const SHOWS = { maids: 'The Maids', isaacs: "Isaac's Eye", henry4: 'Henry IV, Part 1', twelfth: 'Twelfth Night', miracle: 'Miracle on 34th Street',
+  mucedorus: 'Mucedorus', arden: 'Arden of Faversham', tarot: 'Tarot Tales', live: 'a live show' };
+const LOOKS = { quiet: 'Quiet Wound', warm: 'warm, mustard jacket', smart: 'navy blazer', playful: 'patterned shirt', commercial: 'commercial, navy blazer',
+  plaid: 'red plaid', denim: 'denim jacket', cozy: 'plaid fleece', femme: 'clean-shaven, red shirt', masc: 'clean-shaven, paisley shirt' };
+function describe(file) {
+  const base = file.split('/').pop().replace(/-\d+\.jpg$/, '');
+  if (base.startsWith('hs-')) { const look = base.slice(3); return `a headshot (${LOOKS[look] || look})`; }
+  const show = SHOWS[base.split('-')[0]];
+  return show ? `a gallery photo from ${show}` : `a gallery photo (${base})`;
 }
 
 function deviceOf(ua) {

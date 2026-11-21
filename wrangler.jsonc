@@ -10,7 +10,9 @@
     "run_worker_first": ["/downloads/*", "/dl/*"]
   },
   "analytics_engine_datasets": [{ "binding": "DOWNLOADS", "dataset": "istobarton_downloads" }],
-  // Recipient is the NOTIFY_TO secret (set in the Cloudflare dashboard), so no address is in this public repo.
+  // Recipient is NOTIFY_TO, set in the Cloudflare dashboard (Settings > Variables and Secrets) so no address is in this public repo.
+  // keep_vars stops deploys from wiping dashboard variables. Do NOT add NOTIFY_TO to "vars" here, even if the dashboard suggests it.
+  "keep_vars": true,
   "send_email": [{ "name": "MAILER" }],
   "observability": { "enabled": true }
 }
