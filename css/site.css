@@ -170,18 +170,21 @@ a{color:inherit;text-underline-offset:4px}
 .clip figcaption span{color:var(--muted)}
 
 /* contact */
-.csplit{display:grid;grid-template-columns:auto minmax(0,1fr)}
+.csplit{display:grid;grid-template-columns:auto minmax(0,520px);justify-content:center;column-gap:clamp(40px,6vw,96px);padding:0 56px}
 .page.fit{height:100vh;height:100svh;min-height:600px}
 .page.fit>main{min-height:0}
 .cphoto{position:relative;min-height:0;overflow:hidden;height:100%;aspect-ratio:3/4}
 .cphoto picture{position:absolute;inset:0}
 .cphoto img{width:100%;height:100%;object-fit:cover;object-position:45% 30%}
-.cpanel{display:flex;flex-direction:column;justify-content:center;gap:36px;padding:72px 80px}
+.cpanel{display:flex;flex-direction:column;justify-content:center;gap:36px;padding:72px 0}
 .lbl{font-size:13px;letter-spacing:.3em;color:var(--muted)}
 .bigmail{color:var(--paper);font-family:var(--serif);font-style:italic;font-weight:500;font-size:44px;text-underline-offset:8px;text-decoration-color:var(--mustard)}
 .cfind{display:none!important}
 .side-cast{display:none!important}
 .cgrid{display:flex;flex-wrap:wrap;gap:10px;max-width:460px}.cgrid .cbtn{flex:0 1 220px}
+
+/* small laptops / tablets landscape: photo flush left, text fills the rest */
+@media (min-width:821px) and (max-width:1199px){.csplit{grid-template-columns:auto minmax(0,1fr);padding:0;column-gap:0}.cpanel{padding:56px 48px}}
 
 /* phones */
 @media (max-width:820px){
@@ -220,7 +223,7 @@ a{color:inherit;text-underline-offset:4px}
  .row3.acad .n{grid-column:1/-1;font-size:14px}
  .vgrid,.vgrid.v3{grid-template-columns:minmax(0,1fr)}
  .wrap{padding-left:20px!important;padding-right:20px!important}
- .csplit{grid-template-columns:minmax(0,1fr)}
+ .csplit{grid-template-columns:minmax(0,1fr);padding:0;column-gap:0}
  .page.fit{height:auto;min-height:100vh}
  .cphoto{min-height:0;aspect-ratio:4/5}
  .cpanel{padding:32px 20px 40px;align-items:center;text-align:center}
