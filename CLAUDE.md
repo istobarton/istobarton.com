@@ -20,8 +20,8 @@ Actor website for Isto Barton (NYC, non-union screen actor). Static HTML/CSS/JS,
 - index.html, resume.html, gallery.html, media.html, contact.html, privacy.html, 404.html
 - Images: assets/ as responsive picture elements (WebP + JPG at 480/800/1200/1600). First visible image eager, the rest lazy.
 - Videos: media.html play buttons use data-video keys; URLs live in js/site.js VIDEOS (youtube-nocookie embeds, loaded only on click). Self-tape thumbnails come from i.ytimg.com.
-- Downloads: downloads/Isto-Barton-Resume.pdf and downloads/Isto-Barton-Headshots.zip. The PDF is Isto's own plain one-sheet (black serif on white, one page), deliberately not the site style; its credits live in scripts/resume-pdf.mjs, not resume.html. Rebuild with `npm run resume-pdf`.
-- Gallery lightbox: arrows stay within the section opened (headshots or on-stage strip); headshots get a DOWNLOAD THIS HEADSHOT button.
+- Downloads: downloads/Isto-Barton-Resume.pdf and downloads/Isto-Barton-Headshot.jpg (one headshot: Quiet Wound, 2000x2200; no zip). The PDF is Isto's own plain one-sheet (black serif on white, one page), deliberately not the site style; its credits live in scripts/resume-pdf.mjs, not resume.html. Rebuild with `npm run resume-pdf`.
+- Gallery lightbox: arrows stay within the section opened (headshots or on-stage strip); every photo has a DOWNLOAD button for the full-size file.
 - Resume sidebar headshot starts on a random look and cycles every 5s (pauses on hover/focus, off for reduced motion).
 
 ## Security and quality bar

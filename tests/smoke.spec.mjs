@@ -24,12 +24,20 @@ test('gallery lightbox opens and closes with Escape', async ({ page }) => {
   await page.goto('/gallery');
   await page.locator('.hgrid a').first().click();
   await expect(page.locator('.lb')).toHaveClass(/open/);
+  const dl = page.locator('.lb .dl');
+  await expect(dl).toBeVisible();
+  await expect(dl).toHaveAttribute('download', /\.jpg$/);
+  expect((await page.request.get(await dl.getAttribute('href'))).status()).toBe(200);
+  // focus trap: tabbing from the last control wraps back inside the viewer
+  await page.locator('.lb .next').focus();
+  await page.keyboard.press('Tab');
+  expect(await page.evaluate(() => !!document.activeElement.closest('.lb'))).toBe(true);
   await page.keyboard.press('Escape');
   await expect(page.locator('.lb')).not.toHaveClass(/open/);
 });
 
 test('resume downloads exist', async ({ request }) => {
-  for (const f of ['/downloads/Isto-Barton-Resume.pdf', '/downloads/Isto-Barton-Headshots.zip']) {
+  for (const f of ['/downloads/Isto-Barton-Resume.pdf', '/downloads/Isto-Barton-Headshot.jpg']) {
     expect((await request.get(f)).status()).toBe(200);
   }
 });

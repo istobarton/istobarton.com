@@ -55,10 +55,10 @@
     var img = lb.querySelector('img'), cap = lb.querySelector('figcaption'), dl = lb.querySelector('.dl'), items = all, idx = 0, last = null;
     function open(i){ idx = (i + items.length) % items.length; var el = items[idx];
       img.src = el.dataset.full; img.alt = el.dataset.alt || ''; cap.textContent = el.dataset.cap || '';
-      var isHead = !!el.closest('.hgrid');
-      dl.hidden = !isHead;
-      if(isHead){ dl.href = el.dataset.full; var look = el.dataset.full.split('/').pop().replace(/^hs-/, '').replace(/-\d+\.jpg$/, ''); look = ({ femme: 'clean-shaven-red', masc: 'clean-shaven-paisley' })[look] || look;
-        dl.setAttribute('download', 'Isto-Barton-' + look.replace(/(^|-)([a-z])/g, function(m, a, c){ return a + c.toUpperCase(); }) + '.jpg'); }
+      var file = el.dataset.full.split('/').pop().replace(/-\d+\.jpg$/, '').replace(/^hs-/, 'headshot-');
+      file = ({ 'headshot-femme': 'headshot-clean-shaven-red', 'headshot-masc': 'headshot-clean-shaven-paisley' })[file] || file;
+      dl.href = el.dataset.full;
+      dl.setAttribute('download', 'Isto-Barton-' + file.replace(/(^|-)([a-z])/g, function(m, a, c){ return a + c.toUpperCase(); }) + '.jpg');
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; lb.querySelector('.close').focus(); }
     function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; if(last) last.focus(); }
     document.querySelectorAll('[data-full]').forEach(function(el){
@@ -72,7 +72,7 @@
     lb.querySelector('.next').addEventListener('click', function(){ open(idx+1); });
     lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
     document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return;
-      if(e.key === 'Tab'){ var f = Array.prototype.filter.call(lb.querySelectorAll('button, a'), function(x){ return !x.hidden; }), first = f[0], lastB = f[f.length-1];
+      if(e.key === 'Tab'){ var f = lb.querySelectorAll('button, a'), first = f[0], lastB = f[f.length-1];
         if(e.shiftKey && document.activeElement === first){ e.preventDefault(); lastB.focus(); }
         else if(!e.shiftKey && document.activeElement === lastB){ e.preventDefault(); first.focus(); } }
       if(e.key === 'Escape') close(); if(e.key === 'ArrowLeft') open(idx-1); if(e.key === 'ArrowRight') open(idx+1); });
