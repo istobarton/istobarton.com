@@ -1,6 +1,6 @@
 # istobarton.com
 
-Actor website for Isto Barton (NYC, non-union screen actor). Static HTML/CSS/JS, no build step. Hosted on Cloudflare Workers (static assets, wrangler.jsonc; .assetsignore keeps repo files off the live site); every push to main deploys.
+Actor website for Isto Barton (NYC, non-union screen actor). Static HTML/CSS/JS, no build step. Hosted on Cloudflare Workers (static assets, wrangler.jsonc; .assetsignore keeps repo files off the live site); every push to main deploys. src/worker.js runs only for /downloads/* and /dl/* (gallery Download button): it serves the file, writes a data point to Analytics Engine (istobarton_downloads, read by the monthly report) and emails Isto via the send_email binding. The recipient is the NOTIFY_TO secret in the Cloudflare dashboard (repo is public: never commit the Gmail address).
 
 ## Ground rules
 - Sleek and professional: should read two to three career tiers up. No cutesy styling, no white backgrounds.
@@ -13,7 +13,7 @@ Actor website for Isto Barton (NYC, non-union screen actor). Static HTML/CSS/JS,
 - Fonts are self-hosted in /fonts: Jost 400/500 (UI), Cormorant Garamond 500 italic (titles, quotes). Do not add Google Fonts or other CDNs. Cormorant also has a self-hosted Cyrillic subset (unicode-range) so Недоросль renders in the title font.
 - Section headers: mustard, letterspaced caps, hairline rule (.rsec h2 / .msec h2).
 - Home: split layout; four outfit-colored dots switch headshot + paired quote. Lands on Quiet Wound.
-- Nav: Resume · Gallery · Media · Contact. Actors Access + Backstage are mustard buttons (.hbtn) in the header of every inner page and under the quote on home; casting matters more than social. Instagram is a text link in the footer only. On phones (max-width 820px) the header casting buttons are hidden. Footer: ISTO BARTON (links home) with the four outfit dots (wave on hover; on touch screens, once when the footer scrolls into view), then email, casting links, Instagram, Privacy. No copyright line. Contact has no footer and fills exactly one screen on desktop; its FIND ME ON buttons show only on phones.
+- Nav: Resume · Gallery · Media · Contact. Actors Access + Backstage are mustard buttons (.hbtn) in the header of every inner page and under the quote on home; casting matters more than social. Instagram is a text link in the footer only. On phones (max-width 820px) the header casting buttons are hidden. Footer: ISTO BARTON (links home) with the four outfit dots (one wave on hover; on touch screens, one wave when the footer scrolls into view), then email, casting links, Instagram, Privacy. No copyright line. Contact has no footer and fills exactly one screen on desktop; its FIND ME ON buttons show only on phones.
 - Favicon: IB monogram with mustard underline (Isto tried the dots and preferred IB).
 
 ## Pages
@@ -21,7 +21,7 @@ Actor website for Isto Barton (NYC, non-union screen actor). Static HTML/CSS/JS,
 - Images: assets/ as responsive picture elements (WebP + JPG at 480/800/1200/1600). First visible image eager, the rest lazy.
 - Videos: media.html play buttons use data-video keys; URLs live in js/site.js VIDEOS (youtube-nocookie embeds, loaded only on click). Self-tape thumbnails come from i.ytimg.com.
 - Resume page Theatre list matches the PDF exactly (selected credits). Academic Theatre holds only the degree line and the two talks.
-- Downloads: downloads/Isto-Barton-Resume.pdf and downloads/Isto-Barton-Headshot.jpg (one headshot: Quiet Wound, 2000x2200 until the 2400x3000 original arrives; no zip). The PDF is Isto's own plain one-sheet (black serif on white, one page), deliberately not the site style; its credits live in scripts/resume-pdf.mjs, not resume.html. Rebuild with `npm run resume-pdf`.
+- Downloads: downloads/Isto-Barton-Resume.pdf and downloads/Isto-Barton-Headshot.jpg (one headshot: Quiet Wound, 2400x3000, from the 8736x11648 original in Desktop/headshots/actor's access/Isto-Barton-Wound.jpg; no zip). The PDF follows Isto's one-sheet layout (one page, black on white) in the site fonts (Jost, Cormorant italic titles); its credits live in scripts/resume-pdf.mjs, not resume.html. Rebuild with `npm run resume-pdf`.
 - Gallery lightbox: arrows stay within the section opened (headshots or on-stage strip); every photo has a DOWNLOAD button for the full-size file. On touch screens (hover: none) the strip is swipeable, captions always show, and the hint says "Swipe or tap any photo to enlarge". One combined photo-credit line at the bottom.
 - Resume sidebar headshot starts on a random look and cycles every 5s (pauses on hover/focus, off for reduced motion).
 

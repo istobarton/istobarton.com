@@ -1,8 +1,10 @@
 // Builds the one-page casting resume (downloads/Isto-Barton-Resume.pdf).
-// Layout and wording copy Isto's own one-sheet (plain serif, black on white) on purpose: it reads more professional bare.
+// Layout and wording follow Isto's own one-sheet (plain, black on white, one page), set in the site fonts:
+// Jost for text, Cormorant Garamond italic for credit titles. Fonts are embedded from /fonts.
 // Only change from that file: contact is hello@istobarton.com. Never add a phone number here.
 // Usage: npm run resume-pdf
 import { chromium } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 
 const OUT = new URL('../downloads/Isto-Barton-Resume.pdf', import.meta.url).pathname;
 
@@ -51,20 +53,29 @@ const SKILLS = [
   ['Dialects', 'Standard American, New York, Southern, Texan, British RP, Cockney, Irish, Scottish, Australian, Russian'],
 ];
 
+const font = f => 'data:font/woff2;base64,' + readFileSync(new URL('../fonts/' + f, import.meta.url)).toString('base64');
+const FACES = `
+  @font-face { font-family: Jost; font-weight: 400; src: url(${font('jost-latin-400-normal.woff2')}) format('woff2'); }
+  @font-face { font-family: Jost; font-weight: 500; src: url(${font('jost-latin-500-normal.woff2')}) format('woff2'); }
+  @font-face { font-family: Cormorant; font-style: italic; font-weight: 500; src: url(${font('cormorant-garamond-latin-500-italic.woff2')}) format('woff2'); }`;
+
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const dot = ' &nbsp;·&nbsp; ';
 
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>
-  @page { size: Letter; margin: 0.5in 0.7in; }
-  body { margin: 0; font-family: "Times New Roman", Times, serif; font-size: 11pt; color: #000; }
-  h1 { margin: 0; text-align: center; font-size: 26pt; font-weight: 700; border-bottom: 1px solid #000; padding-bottom: 4px; }
-  .info { text-align: center; margin: 8px 0 0; line-height: 1.45; }
-  section { margin-top: 15px; }
-  h2 { margin: 0 0 6px; font-size: 12.5pt; font-weight: 700; border-bottom: 1px solid #000; padding-bottom: 2px; }
-  h2 em { font-weight: 400; font-size: 11.5pt; }
-  .r { display: grid; grid-template-columns: 36% 32% 32%; line-height: 1.48; }
+  ${FACES}
+  @page { size: Letter; margin: 0.5in 0.65in; }
+  body { margin: 0; font-family: Jost, sans-serif; font-size: 9.6pt; color: #111; }
+  h1 { margin: 0; text-align: center; font-size: 24pt; font-weight: 500; letter-spacing: .24em; padding-left: .24em; border-bottom: 1.5px solid #D4A73A; padding-bottom: 6px; }
+  .info { text-align: center; margin: 8px 0 0; line-height: 1.6; letter-spacing: .02em; }
+  section { margin-top: 12px; }
+  h2 { margin: 0 0 5px; font-size: 9pt; font-weight: 500; letter-spacing: .28em; border-bottom: 1px solid #999; padding-bottom: 3px; }
+  h2 em { font-weight: 400; letter-spacing: .04em; text-transform: none; }
+  .r { display: grid; grid-template-columns: 36% 32% 32%; line-height: 1.43; align-items: baseline; }
+  .r span:first-child { font-family: Cormorant, serif; font-style: italic; font-weight: 500; font-size: 11.6pt; font-variant-numeric: lining-nums; }
   .r span:last-child { text-align: right; }
-  .s { line-height: 1.48; }
+  .s { line-height: 1.5; }
+  .s b { font-weight: 500; }
 </style></head><body>
   <h1>ISTO BARTON</h1>
   <p class="info">${CONTACT.map(esc).join(dot)}<br>${STATS.map(esc).join(dot)}</p>
@@ -78,6 +89,7 @@ if (/\(\d{3}\)|\d{3}[-. ]\d{3}[-. ]\d{4}/.test(html)) { console.error('Refusing 
 const browser = await chromium.launch();
 const page = await browser.newPage();
 await page.setContent(html, { waitUntil: 'load' });
+await page.evaluate(() => document.fonts.ready);
 await page.pdf({ path: OUT, format: 'Letter', printBackground: true, preferCSSPageSize: true });
 await browser.close();
 console.log('Wrote', OUT);

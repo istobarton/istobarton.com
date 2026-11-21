@@ -58,8 +58,10 @@
       img.src = el.dataset.full; img.alt = el.dataset.alt || ''; cap.textContent = el.dataset.cap || '';
       var file = el.dataset.full.split('/').pop().replace(/-\d+\.jpg$/, '').replace(/^hs-/, 'headshot-');
       file = ({ 'headshot-femme': 'headshot-clean-shaven-red', 'headshot-masc': 'headshot-clean-shaven-paisley' })[file] || file;
-      dl.href = el.dataset.full;
-      dl.setAttribute('download', 'Isto-Barton-' + file.replace(/(^|-)([a-z])/g, function(m, a, c){ return a + c.toUpperCase(); }) + '.jpg');
+      var nice = 'Isto-Barton-' + file.replace(/(^|-)([a-z])/g, function(m, a, c){ return a + c.toUpperCase(); }) + '.jpg';
+      // /dl/ goes through the site's Worker, which counts the download and serves the same file
+      dl.href = '/dl' + el.dataset.full + '?name=' + encodeURIComponent(nice);
+      dl.setAttribute('download', nice);
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; lb.querySelector('.close').focus(); }
     function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; if(last) last.focus(); }
     document.querySelectorAll('[data-full]').forEach(function(el){

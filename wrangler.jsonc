@@ -1,8 +1,16 @@
 {
   "name": "istobarton",
+  "main": "src/worker.js",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": ".",
-    "not_found_handling": "404-page"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // Only downloads go through src/worker.js (to count them and email Isto); everything else is served directly.
+    "run_worker_first": ["/downloads/*", "/dl/*"]
+  },
+  "analytics_engine_datasets": [{ "binding": "DOWNLOADS", "dataset": "istobarton_downloads" }],
+  // Recipient is the NOTIFY_TO secret (set in the Cloudflare dashboard), so no address is in this public repo.
+  "send_email": [{ "name": "MAILER" }],
+  "observability": { "enabled": true }
 }

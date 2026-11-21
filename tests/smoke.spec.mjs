@@ -27,7 +27,10 @@ test('gallery lightbox opens and closes with Escape', async ({ page }) => {
   const dl = page.locator('.lb .dl');
   await expect(dl).toBeVisible();
   await expect(dl).toHaveAttribute('download', /\.jpg$/);
-  expect((await page.request.get(await dl.getAttribute('href'))).status()).toBe(200);
+  // /dl/<asset> is handled by the Worker in production; locally just check the underlying file exists
+  const href = await dl.getAttribute('href');
+  expect(href).toMatch(/^\/dl\/assets\/img\/[a-z0-9-]+\.jpg\?name=/);
+  expect((await page.request.get(href.replace(/^\/dl/, '').split('?')[0])).status()).toBe(200);
   // focus trap: tabbing from the last control wraps back inside the viewer
   await page.locator('.lb .next').focus();
   await page.keyboard.press('Tab');

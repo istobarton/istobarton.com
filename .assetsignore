@@ -10,3 +10,6 @@ scripts
 node_modules
 .github
 .git
+src
+.wrangler
+.gitignore
