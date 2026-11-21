@@ -28,6 +28,17 @@
         }, 180);
       }
     }
+    if(root.classList.contains('side') && pics.length > 1){
+      var cur = Math.floor(Math.random() * pics.length), timer = null;
+      show(cur);
+      var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function start(){ if(!calm && !timer) timer = setInterval(function(){ cur = (cur + 1) % pics.length; show(cur); }, 5000); }
+      function stop(){ clearInterval(timer); timer = null; }
+      root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', start);
+      root.addEventListener('focusin', stop); root.addEventListener('focusout', start);
+      dots.forEach(function(d,k){ ['click','mouseenter','focus'].forEach(function(ev){ d.addEventListener(ev, function(){ cur = k; }); }); });
+      start();
+    }
     dots.forEach(function(d,k){
       d.addEventListener('click', function(){ show(k); });
       d.addEventListener('mouseenter', function(){ show(k); });
@@ -35,19 +46,25 @@
     });
   });
 
-  // Lightbox for gallery images
+  // Lightbox for gallery images. Arrows stay inside the section you opened (headshots or on-stage).
   var lb = document.querySelector('.lb');
   if(lb){
-    var items = Array.prototype.slice.call(document.querySelectorAll('[data-full]'));
-    // only one copy of each looping filmstrip photo
-    items = items.filter(function(el){ return !el.closest('[aria-hidden="true"]'); });
-    var img = lb.querySelector('img'), cap = lb.querySelector('figcaption'), idx = 0, last = null;
+    var all = Array.prototype.slice.call(document.querySelectorAll('[data-full]'))
+      // only one copy of each looping filmstrip photo
+      .filter(function(el){ return !el.closest('[aria-hidden="true"]'); });
+    var img = lb.querySelector('img'), cap = lb.querySelector('figcaption'), dl = lb.querySelector('.dl'), items = all, idx = 0, last = null;
     function open(i){ idx = (i + items.length) % items.length; var el = items[idx];
       img.src = el.dataset.full; img.alt = el.dataset.alt || ''; cap.textContent = el.dataset.cap || '';
+      var isHead = !!el.closest('.hgrid');
+      dl.hidden = !isHead;
+      if(isHead){ dl.href = el.dataset.full; var look = el.dataset.full.split('/').pop().replace(/^hs-/, '').replace(/-\d+\.jpg$/, ''); look = ({ femme: 'clean-shaven-red', masc: 'clean-shaven-paisley' })[look] || look;
+        dl.setAttribute('download', 'Isto-Barton-' + look.replace(/(^|-)([a-z])/g, function(m, a, c){ return a + c.toUpperCase(); }) + '.jpg'); }
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; lb.querySelector('.close').focus(); }
     function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; if(last) last.focus(); }
     document.querySelectorAll('[data-full]').forEach(function(el){
       el.addEventListener('click', function(e){ e.preventDefault(); last = el;
+        var group = el.closest('.hgrid, .strip');
+        items = all.filter(function(x){ return x.closest('.hgrid, .strip') === group; });
         var src = el.dataset.full; var i = items.findIndex(function(x){ return x.dataset.full === src; }); open(i < 0 ? 0 : i); });
     });
     lb.querySelector('.close').addEventListener('click', close);
@@ -55,7 +72,7 @@
     lb.querySelector('.next').addEventListener('click', function(){ open(idx+1); });
     lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
     document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return;
-      if(e.key === 'Tab'){ var f = lb.querySelectorAll('button'), first = f[0], lastB = f[f.length-1];
+      if(e.key === 'Tab'){ var f = Array.prototype.filter.call(lb.querySelectorAll('button, a'), function(x){ return !x.hidden; }), first = f[0], lastB = f[f.length-1];
         if(e.shiftKey && document.activeElement === first){ e.preventDefault(); lastB.focus(); }
         else if(!e.shiftKey && document.activeElement === lastB){ e.preventDefault(); first.focus(); } }
       if(e.key === 'Escape') close(); if(e.key === 'ArrowLeft') open(idx-1); if(e.key === 'ArrowRight') open(idx+1); });

@@ -13,13 +13,15 @@ Actor website for Isto Barton (NYC, non-union screen actor). Static HTML/CSS/JS,
 - Fonts are self-hosted in /fonts: Jost 400/500 (UI), Cormorant Garamond 500 italic (titles, quotes). Do not add Google Fonts or other CDNs.
 - Section headers: mustard, letterspaced caps, hairline rule (.rsec h2 / .msec h2).
 - Home: split layout; four outfit-colored dots switch headshot + paired quote. Lands on Quiet Wound.
-- Nav: Resume · Gallery · Media · Contact. Actors Access + Backstage are mustard buttons (.hbtn) in the header of every inner page and under the quote on home; casting matters more than social. Instagram is a text link in the footer only.
+- Nav: Resume · Gallery · Media · Contact. Actors Access + Backstage are mustard buttons (.hbtn) in the header of every inner page and under the quote on home; casting matters more than social. Instagram is a text link in the footer only. Footer: ISTO BARTON (links home) with the four outfit dots, then email, casting links, Instagram, Privacy. No copyright line.
 
 ## Pages
 - index.html, resume.html, gallery.html, media.html, contact.html, privacy.html, 404.html
 - Images: assets/ as responsive picture elements (WebP + JPG at 480/800/1200/1600). First visible image eager, the rest lazy.
 - Videos: media.html play buttons use data-video keys; URLs live in js/site.js VIDEOS (youtube-nocookie embeds, loaded only on click). Self-tape thumbnails come from i.ytimg.com.
-- Downloads: downloads/Isto-Barton-Resume.pdf (2 pages) and downloads/Isto-Barton-Headshots.zip. If the resume page changes, regenerate the PDF: `npm run serve`, then `npm run resume-pdf` (builds it from resume.html).
+- Downloads: downloads/Isto-Barton-Resume.pdf and downloads/Isto-Barton-Headshots.zip. The PDF is Isto's own plain one-sheet (black serif on white, one page), deliberately not the site style; its credits live in scripts/resume-pdf.mjs, not resume.html. Rebuild with `npm run resume-pdf`.
+- Gallery lightbox: arrows stay within the section opened (headshots or on-stage strip); headshots get a DOWNLOAD THIS HEADSHOT button.
+- Resume sidebar headshot starts on a random look and cycles every 5s (pauses on hover/focus, off for reduced motion).
 
 ## Security and quality bar
 - _headers holds CSP, HSTS and caching. Any new third-party origin must be added to the CSP deliberately (and mentioned on privacy.html if it touches visitors).

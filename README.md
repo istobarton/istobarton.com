@@ -53,7 +53,7 @@ Edit the HTML directly:
 ## Everyday edits
 - **Text:** open the page's `.html`, change the words, commit, push. Live in about a minute.
 - **A credit:** in `resume.html` each credit is one `<div class="row3">…</div>`; copy a line, edit it.
-  Then rebuild the PDF: `npm run serve`, and in another tab `npm run resume-pdf`.
+  The downloadable PDF is a separate one-sheet: edit its credits in `scripts/resume-pdf.mjs`, then `npm run resume-pdf`.
 - **A photo:** export it as `name-800.jpg` and `name-800.webp` (plus 480 and 1200/1600 if you have them) into
   `assets/img/`, then copy an existing `<picture>` block and change the name. Or ask Claude to do it.
 - **Roll back:** Cloudflare → Pages project → Deployments → pick the last good one → "Rollback to this deployment".
