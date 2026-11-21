@@ -40,6 +40,25 @@
       dots.forEach(function(d,k){ ['click','mouseenter','focus'].forEach(function(ev){ d.addEventListener(ev, function(){ cur = k; }); }); });
       start();
     }
+    // Home: size the quote box to the tallest quote so the buttons below never jump when switching
+    if(quote){
+      var fit = function(){
+        var probe = quote.cloneNode(true), tallest = 0;
+        probe.removeAttribute('aria-live'); probe.setAttribute('aria-hidden', 'true');
+        probe.style.cssText = 'position:absolute;visibility:hidden;left:0;right:0;min-height:0;width:' + quote.getBoundingClientRect().width + 'px';
+        quote.parentNode.appendChild(probe);
+        dots.forEach(function(d){
+          probe.querySelector('blockquote').textContent = d.hasAttribute('data-plain') ? d.dataset.q : '“' + d.dataset.q + '”';
+          probe.querySelector('figcaption').textContent = d.dataset.s;
+          tallest = Math.max(tallest, probe.getBoundingClientRect().height);
+        });
+        probe.remove();
+        quote.style.minHeight = Math.ceil(tallest) + 'px';
+      };
+      fit();
+      if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+      var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(fit, 150); });
+    }
     dots.forEach(function(d,k){
       d.addEventListener('click', function(){ show(k); });
       d.addEventListener('mouseenter', function(){ show(k); });
