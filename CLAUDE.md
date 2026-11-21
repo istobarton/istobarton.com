@@ -10,7 +10,7 @@ Actor website for Isto Barton (NYC, non-union screen actor). Static HTML/CSS/JS,
 
 ## Design system
 - Colors (css/site.css :root): Slate #2A3236 (pages), Deep #232A2E, Iris #4D5964 (casting band, his eye color), Mustard #D4A73A (accent, primary buttons), Paper #F5F5F3.
-- Fonts are self-hosted in /fonts: Jost 400/500 (UI), Cormorant Garamond 500 italic (titles, quotes). Do not add Google Fonts or other CDNs.
+- Fonts are self-hosted in /fonts: Jost 400/500 (UI), Cormorant Garamond 500 italic (titles, quotes). Do not add Google Fonts or other CDNs. Cormorant also has a self-hosted Cyrillic subset (unicode-range) so Недоросль renders in the title font.
 - Section headers: mustard, letterspaced caps, hairline rule (.rsec h2 / .msec h2).
 - Home: split layout; four outfit-colored dots switch headshot + paired quote. Lands on Quiet Wound.
 - Nav: Resume · Gallery · Media · Contact. Actors Access + Backstage are mustard buttons (.hbtn) in the header of every inner page and under the quote on home; casting matters more than social. Instagram is a text link in the footer only. On phones (max-width 820px) the header casting buttons are hidden. Footer: ISTO BARTON (links home) with the four outfit dots (wave on first view and on hover), then email, casting links, Instagram, Privacy. No copyright line. Contact has no footer and fills exactly one screen on desktop; its FIND ME ON buttons show only on phones.
