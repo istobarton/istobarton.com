@@ -10,8 +10,11 @@
     "resume-pdf": "node scripts/resume-pdf.mjs"
   },
   "devDependencies": {
-    "@playwright/test": "1.48.2",
-    "linkinator": "6.1.2",
-    "serve": "14.2.4"
+    "@playwright/test": "1.65.1",
+    "linkinator": "8.1.0",
+    "serve": "14.2.8"
+  },
+  "overrides": {
+    "glob": "14.0.6"
   }
 }

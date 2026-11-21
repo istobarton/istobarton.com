@@ -13,7 +13,8 @@ Actor website for Isto Barton (NYC, non-union screen actor). Static HTML/CSS/JS,
 - Fonts are self-hosted in /fonts: Jost 400/500 (UI), Cormorant Garamond 500 italic (titles, quotes). Do not add Google Fonts or other CDNs.
 - Section headers: mustard, letterspaced caps, hairline rule (.rsec h2 / .msec h2).
 - Home: split layout; four outfit-colored dots switch headshot + paired quote. Lands on Quiet Wound.
-- Nav: Resume · Gallery · Media · Contact. Actors Access + Backstage are mustard buttons (.hbtn) in the header of every inner page and under the quote on home; casting matters more than social. Instagram is a text link in the footer only. Footer: ISTO BARTON (links home) with the four outfit dots, then email, casting links, Instagram, Privacy. No copyright line.
+- Nav: Resume · Gallery · Media · Contact. Actors Access + Backstage are mustard buttons (.hbtn) in the header of every inner page and under the quote on home; casting matters more than social. Instagram is a text link in the footer only. On phones (max-width 820px) the header casting buttons are hidden. Footer: ISTO BARTON (links home) with the four outfit dots (wave on first view and on hover), then email, casting links, Instagram, Privacy. No copyright line. Contact has no footer and fills exactly one screen on desktop; its FIND ME ON buttons show only on phones.
+- Favicon: the four outfit dots in a 2x2 grid on slate.
 
 ## Pages
 - index.html, resume.html, gallery.html, media.html, contact.html, privacy.html, 404.html

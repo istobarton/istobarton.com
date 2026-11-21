@@ -78,6 +78,20 @@
       if(e.key === 'Escape') close(); if(e.key === 'ArrowLeft') open(idx-1); if(e.key === 'ArrowRight') open(idx+1); });
   }
 
+  // Filmstrip: once the page has loaded, fetch every strip photo so none are blank when they scroll in
+  if(document.querySelector('.strip')){
+    window.addEventListener('load', function(){
+      document.querySelectorAll('.strip img').forEach(function(im){ im.loading = 'eager'; });
+    });
+  }
+
+  // Footer dots do a little wave the first time the footer scrolls into view
+  var fd = document.querySelector('.fdots');
+  if(fd && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ fd.classList.add('wave'); io.disconnect(); } }, { threshold: 1 });
+    io.observe(fd);
+  }
+
   // Lite video embeds: only load the player when someone presses play
   document.querySelectorAll('[data-video]').forEach(function(btn){
     var url = VIDEOS[btn.dataset.video];
